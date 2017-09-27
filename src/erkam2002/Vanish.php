@@ -39,7 +39,7 @@ class Vanish extends PluginBase implements Listener {
                     $sender->setDataFlag(Entity::DATA_FLAGS, Entity::DATA_FLAG_INVISIBLE, true);
                     $sender->setNameTagVisible(false);
                     if($this->config->get("Creative_Vanish") == false){
-                        $sender->setGamemode(2);
+                        $sender->setGamemode(0);
                     }
                     $sender->sendMessage($this->prefix . C::GREEN . "You are now super vanished. No one can see you.");
                     return true;
