@@ -33,7 +33,7 @@ class Vanish extends PluginBase implements Listener {
 
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool{
         $name = $sender->getName();
-        if($cmd->getName() == "sv") {
+        if($cmd->getName() == "vanish") {
             if ($sender->hasPermission("vanish.use")) {
                 if (!in_array($name, $this->vanish)) {
                     $this->vanish[] = $name;
