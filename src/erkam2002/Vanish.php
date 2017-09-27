@@ -42,6 +42,7 @@ class Vanish extends PluginBase implements Listener {
                         $sender->setGamemode(2);
                     }
                     $sender->sendMessage($this->prefix . C::GREEN . "You are now super vanished. No one can see you.");
+                    return true;
                 } elseif (in_array($name, $this->vanish)) {
                     unset($this->vanish[array_search($name, $this->vanish)]);
                     $sender->setDataFlag(Entity::DATA_FLAGS, Entity::DATA_FLAG_INVISIBLE, false);
@@ -52,6 +53,7 @@ class Vanish extends PluginBase implements Listener {
                     $sender->setHealth(20);
                     $sender->setFood(20);
                     $sender->sendMessage($this->prefix . C::RED . "You are no longer super vanished! everyone should be able to see you.");
+                    return true;
                 }
             }
         }
