@@ -31,16 +31,16 @@ class Vanish extends PluginBase implements Listener {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
 
-    public function onCommand(CommandSender $sender, Command $cmd, $label, array $args){
+    public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool{
         $name = $sender->getName();
-        if($cmd->getName() == "vanish") {
+        if($cmd->getName() == "sv") {
             if ($sender->hasPermission("vanish.use")) {
                 if (!in_array($name, $this->vanish)) {
                     $this->vanish[] = $name;
                     $sender->setDataFlag(Entity::DATA_FLAGS, Entity::DATA_FLAG_INVISIBLE, true);
                     $sender->setNameTagVisible(false);
                     if($this->config->get("Creative_Vanish") == false){
-                        $sender->setGamemode(1);
+                        $sender->setGamemode(2);
                     }
                     $sender->sendMessage($this->prefix . C::GREEN . "You are now super vanished. No one can see you.");
                 } elseif (in_array($name, $this->vanish)) {
