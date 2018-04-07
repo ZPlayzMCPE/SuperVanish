@@ -1,5 +1,7 @@
 <?php
+
 namespace ErkamKahriman\Vanish;
+
 use pocketmine\event\player\{PlayerLoginEvent, PlayerQuitEvent};
 use pocketmine\plugin\PluginBase;
 use pocketmine\entity\{Effect, EffectInstance};
@@ -7,7 +9,9 @@ use pocketmine\{Player, Server};
 use pocketmine\event\Listener;
 use pocketmine\utils\TextFormat as C;
 use pocketmine\command\{Command, CommandSender};
+
 class Vanish extends PluginBase implements Listener {
+    
     const PREFIX = C::BLUE . "§7[" . C::GRAY . "§aSuper§6Vanish§7]" . C::RESET;
     public $vanish = array();
     public function onEnable() {
@@ -40,11 +44,11 @@ class Vanish extends PluginBase implements Listener {
             }
         }
         $name = $sender->getName();
-        $vanish = $this->vanish[$name];
+        $vanish = ($this->vanish[$name] = true or $this->vanish[$name] = false);
         if ($cmd->getName() == "supervanishstatus") {
             if ($sender instanceof Player) {
                 if ($sender->hasPermission("supervanish.status")) {
-                    $sender->sendMessage("§aYou're SuperVanish status is currently: §b$vanish");
+                    $sender->sendMessage("§aYou're SuperVanish status is currently: §d$vanish");
                 }
             } else {
                 $sender->sendMessage(self::PREFIX . C::YELLOW . " Please use this command in-game.");
