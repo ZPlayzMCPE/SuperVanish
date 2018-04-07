@@ -7,7 +7,13 @@ commands:
   supervanish:
     description: "Vanish yourself"
     aliases: [sv]
+  supervanishstatus:
+    description: "See vanish status"
+    aliases: [svstatus, svs]
 permissions:
   supervanish.spectate:
     description: "Vanish use permission"
+    default: op
+  supervanish.status:
+    description: "Vanish Status permission"
     default: op
