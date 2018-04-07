@@ -37,6 +37,15 @@ class Vanish extends PluginBase implements Listener {
                         $this->getServer()->broadcastMessage(C::RED . "§a$name §ehas joined the game");
                     }
                 }
+            }
+        }
+        $name = $sender->getName();
+        $vanish = $this->vanish[$name];
+        if ($cmd->getName() == "supervanishstatus") {
+            if ($sender instanceof Player) {
+                if ($sender->hasPermission("supervanish.status")) {
+                    $sender->sendMessage("§aYou're SuperVanish status is currently: §b$vanish");
+                }
             } else {
                 $sender->sendMessage(self::PREFIX . C::YELLOW . " Please use this command in-game.");
             }
