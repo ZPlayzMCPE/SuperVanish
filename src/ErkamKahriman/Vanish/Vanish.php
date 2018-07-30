@@ -11,7 +11,7 @@ class Vanish extends PluginBase implements Listener {
     const PREFIX = C::BLUE . "§7[" . C::GRAY . "§aSuper§6Vanish§7]" . C::RESET;
     public $vanish = array();
     public function onEnable() {
-        $this->getServer()->getScheduler()->scheduleRepeatingTask(new VanishTask($this), 20);
+        $this->getScheduler()->scheduleRepeatingTask(new VanishTask($this), 20);
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->getLogger()->info(C::GREEN . "Plugin enabled.");
     }
